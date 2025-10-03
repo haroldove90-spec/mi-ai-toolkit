@@ -4,7 +4,7 @@ import { ToolCategory } from './types';
 
 const iconProps = { className: "h-8 w-8", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 1.5 };
 
-const createIcon = (path: React.ReactNode): React.ReactNode => <svg {...iconProps}>{path}</svg>;
+const createIcon = (path: React.ReactNode): React.ReactElement => <svg {...iconProps}>{path}</svg>;
 
 
 export const TOOLS: Tool[] = [
@@ -280,7 +280,7 @@ export const TOOLS: Tool[] = [
         title: 'Asistente de Diseño Web UI',
         description: 'Obtén sugerencias de layout y estructura de componentes para diferentes tipos de páginas web.',
         category: ToolCategory.PROJECT_SPECIFIC,
-        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M6 20.25h12m-12-3.75h12m-12-3.75h12m-12-3.75h12m-12-3.75h12m-12-3.75h12M4.5 2.25h15a2.25 2.25 0 012.25 2.25v15a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25v-15A2.25 2.25 0 014.5 2.25z" />),
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M6 20.25h12m-12-3.75h12m-12-3.75h12m-12-3.75h12m-12-3.75h12m-12-3.75h12M4.5 2.25h15a2.25 2.25 0 012.25 2.25v15a2.25 2.25 0 01-2.25-2.25h-15a2.25 2.25 0 01-2.25-2.25v-15A2.25 2.25 0 014.5 2.25z" />),
         isImplemented: true,
     },
     {
