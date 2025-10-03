@@ -2,7 +2,6 @@ import React, { useState, useCallback } from 'react';
 import { generateStructuredText } from '../../services/geminiService';
 import type { Tool } from '../../types';
 import Spinner from '../ui/Spinner';
-import { Type } from '@google/genai';
 
 interface BrandNameGeneratorProps {
     tool: Tool;
@@ -35,18 +34,18 @@ const BrandNameGenerator: React.FC<BrandNameGeneratorProps> = ({ tool, onBack })
         try {
             const prompt = `Generate 3 complete brand identity concepts for a product/service. Product description: '${description}'. Keywords: '${keywords}'. The desired tone is '${tone}'. For each concept, provide a brand name, a slogan, a simulated availability check ('Probablemente Disponible' or 'Posiblemente Tomado'), and a brief visual concept idea for a logo.`;
             const schema = {
-                type: Type.OBJECT,
+                type: 'OBJECT',
                 properties: {
                     ideas: {
-                        type: Type.ARRAY,
+                        type: 'ARRAY',
                         description: "An array of 3 complete brand concepts.",
                         items: {
-                            type: Type.OBJECT,
+                            type: 'OBJECT',
                             properties: {
-                                name: { type: Type.STRING },
-                                slogan: { type: Type.STRING },
-                                availability: { type: Type.STRING, description: "Simulated availability check." },
-                                visualConcept: { type: Type.STRING, description: "A brief logo/visual idea." }
+                                name: { type: 'STRING' },
+                                slogan: { type: 'STRING' },
+                                availability: { type: 'STRING', description: "Simulated availability check." },
+                                visualConcept: { type: 'STRING', description: "A brief logo/visual idea." }
                             },
                             required: ["name", "slogan", "availability", "visualConcept"]
                         }

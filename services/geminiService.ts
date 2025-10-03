@@ -1,5 +1,3 @@
-import { Type } from "@google/genai";
-
 // Convierte un objeto File a un formato serializable (Base64) para enviarlo en el cuerpo de una petición JSON.
 async function fileToSerializable(file: File): Promise<{ data: string; mimeType: string }> {
     return new Promise((resolve, reject) => {
@@ -155,16 +153,16 @@ export interface Color {
 export const generateColorPalette = async (theme: string): Promise<Color[]> => {
     const prompt = `Generate a color palette with 5 colors for the theme: ${theme}. Provide creative names for each color.`;
     const schema = {
-        type: Type.OBJECT,
+        type: 'OBJECT',
         properties: {
             palette: {
-                type: Type.ARRAY,
+                type: 'ARRAY',
                 description: 'An array of 5 color objects.',
                 items: {
-                    type: Type.OBJECT,
+                    type: 'OBJECT',
                     properties: {
-                        name: { type: Type.STRING, description: 'The creative name of the color.' },
-                        hex: { type: Type.STRING, description: 'The hex code for the color (e.g., #RRGGBB).' },
+                        name: { type: 'STRING', description: 'The creative name of the color.' },
+                        hex: { type: 'STRING', description: 'The hex code for the color (e.g., #RRGGBB).' },
                     },
                     required: ["name", "hex"]
                 },
