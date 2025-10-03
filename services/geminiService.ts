@@ -88,6 +88,15 @@ export const analyzeOriginality = async (prompt: string, image: File): Promise<a
     return callApi('analyzeOriginality', { prompt, image: serializableImage });
 };
 
+export interface Message {
+    role: 'user' | 'model';
+    text: string;
+}
+
+export const continueConversation = (history: Message[], newMessage: string): Promise<{ text: string }> => {
+    return callApi('continueConversation', { history, newMessage });
+};
+
 export interface KitData {
     colors: {
         primary: string[];

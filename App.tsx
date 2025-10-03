@@ -41,6 +41,7 @@ import MoodBoardGenerator from './components/tools/MoodBoardGenerator';
 import LiveDesignSession from './components/tools/LiveDesignSession';
 import VideoStoryboardGenerator from './components/tools/VideoStoryboardGenerator';
 import SlideshowGenerator from './components/tools/SlideshowGenerator';
+import ConversationalAssistant from './components/tools/ConversationalAssistant';
 
 
 const App: React.FC = () => {
@@ -101,6 +102,7 @@ const App: React.FC = () => {
             case 'social-media-optimization': return <SocialMediaOptimization {...toolProps} />;
 
             // Design Assistant
+            case 'conversational-assistant': return <ConversationalAssistant {...toolProps} />;
             case 'automated-critique': return <AutomatedCritique {...toolProps} />;
             case 'improvement-suggestions': return <ImprovementSuggestions {...toolProps} />;
             case 'error-detection': return <ErrorDetection {...toolProps} />;

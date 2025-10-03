@@ -276,6 +276,25 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                 return res.status(200).json({ data: JSON.parse(response.text.trim()) });
             }
 
+            case 'continueConversation': {
+                const { history, newMessage } = payload;
+                const contents = history.map((msg: { role: string; text: string }) => ({
+                    role: msg.role,
+                    parts: [{ text: msg.text }],
+                }));
+                contents.push({ role: 'user', parts: [{ text: newMessage }] });
+
+                const response = await ai.models.generateContent({
+                    model: "gemini-2.5-flash",
+                    contents,
+                    config: {
+                        systemInstruction: "You are a world-class senior graphic designer and creative director, acting as a helpful AI assistant for a designer named Arnold. Your name is 'Arnold's Assistant'. Provide expert advice, critiques, and creative ideas. Be concise, professional, and encouraging. You can also help with technical aspects like suggesting CSS code snippets if asked.",
+                    },
+                });
+
+                return res.status(200).json({ data: { text: response.text } });
+            }
+
             default:
                 return res.status(400).json({ error: 'Invalid action' });
         }
