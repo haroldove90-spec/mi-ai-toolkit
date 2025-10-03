@@ -1,0 +1,19 @@
+{
+  "name": "ai-designer-toolkit",
+  "version": "1.0.0",
+  "description": "An AI-powered toolkit for graphic designer Arnold Jourdan.",
+  "private": true,
+  "scripts": {
+    "dev": "echo 'No dev script configured. Open index.html in a browser.'",
+    "build": "echo 'No build step required for static files.'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@google/genai": "^1.21.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@vercel/node": "^3.0.0",
+    "typescript": "^5.0.0"
+  }
+}
