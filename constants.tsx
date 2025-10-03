@@ -4,6 +4,9 @@ import { ToolCategory } from './types';
 
 const iconProps = { className: "h-8 w-8", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 1.5 };
 
+const createIcon = (path: React.ReactNode): React.ReactNode => <svg {...iconProps}>{path}</svg>;
+
+
 export const TOOLS: Tool[] = [
     // === CREATIVE_ASSISTANCE ===
     {
@@ -11,7 +14,7 @@ export const TOOLS: Tool[] = [
         title: 'Generador de Imágenes por IA',
         description: 'Crea imágenes y arte únicos a partir de descripciones de texto (prompts). Ideal para conceptos visuales rápidos.',
         category: ToolCategory.CREATIVE_ASSISTANCE,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c.251.023.501.05.75.082a.75.75 0 01.75.75v5.714a2.25 2.25 0 00.659 1.591L19 14.5m-9.25-11.396l.001-2.015a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v2.015" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c.251.023.501.05.75.082a.75.75 0 01.75.75v5.714a2.25 2.25 0 00.659 1.591L19 14.5m-9.25-11.396l.001-2.015a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v2.015" />),
         isImplemented: true,
     },
     {
@@ -19,7 +22,7 @@ export const TOOLS: Tool[] = [
         title: 'Sesión de Diseño en Vivo',
         description: 'Colabora con la IA. Proporciona una idea y mira cómo se expande en un brief y se convierte en una imagen en tiempo real.',
         category: ToolCategory.CREATIVE_ASSISTANCE,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />),
         isImplemented: true,
     },
     {
@@ -27,7 +30,7 @@ export const TOOLS: Tool[] = [
         title: 'Voz a Diseño',
         description: 'Describe tu idea en voz alta y la IA la convertirá en una imagen. Ideal para un flujo de trabajo manos libres.',
         category: ToolCategory.CREATIVE_ASSISTANCE,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 016 0v8.25a3 3 0 01-3 3z" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 016 0v8.25a3 3 0 01-3 3z" />),
         isImplemented: true,
     },
     {
@@ -35,7 +38,7 @@ export const TOOLS: Tool[] = [
         title: 'Paletas de Colores Inteligentes',
         description: 'Genera paletas de colores armoniosas a partir de un tema, una palabra clave o una emoción.',
         category: ToolCategory.CREATIVE_ASSISTANCE,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56a12.018 12.018 0 00-5.84-2.56m0 0a12.018 12.018 0 00-5.84 2.56m5.84-2.56V4.72a6 6 0 0111.68 0v1.25m-11.68 0a6 6 0 00-5.84 7.38m5.84-7.38l-3.235 3.235" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56a12.018 12.018 0 00-5.84-2.56m0 0a12.018 12.018 0 00-5.84 2.56m5.84-2.56V4.72a6 6 0 0111.68 0v1.25m-11.68 0a6 6 0 00-5.84 7.38m5.84-7.38l-3.235 3.235" />),
         isImplemented: true,
     },
     {
@@ -43,7 +46,7 @@ export const TOOLS: Tool[] = [
         title: 'Brainstorming Visual',
         description: 'Introduce un concepto y obtén múltiples variaciones visuales para explorar diferentes direcciones creativas.',
         category: ToolCategory.CREATIVE_ASSISTANCE,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M12 18v.01M7.71 11.29a1 1 0 011.05-1.58L10 11.05l1.24-1.34a1 1 0 111.52 1.3l-1.78 1.92a1 1 0 01-1.53 0l-1.74-1.64zM12 21a9 9 0 100-18 9 9 0 000 18z" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M12 18v.01M7.71 11.29a1 1 0 011.05-1.58L10 11.05l1.24-1.34a1 1 0 111.52 1.3l-1.78 1.92a1 1 0 01-1.53 0l-1.74-1.64zM12 21a9 9 0 100-18 9 9 0 000 18z" />),
         isImplemented: true,
     },
     {
@@ -51,7 +54,7 @@ export const TOOLS: Tool[] = [
         title: 'Mockups Automáticos',
         description: 'Genera mockups realistas de tus diseños aplicados a productos como tazas, camisetas o pantallas de dispositivos.',
         category: ToolCategory.CREATIVE_ASSISTANCE,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />),
         isImplemented: true,
     },
     {
@@ -59,7 +62,7 @@ export const TOOLS: Tool[] = [
         title: 'Generador de Nombres de Marca',
         description: 'Obtén sugerencias de nombres para tu marca, incluyendo slogans, conceptos visuales y disponibilidad simulada.',
         category: ToolCategory.CREATIVE_ASSISTANCE,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" /><path strokeLinecap="round" strokeLinejoin="round" d="M6 6h.008v.008H6V6z" /></svg>,
+        icon: createIcon(<><path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" /><path strokeLinecap="round" strokeLinejoin="round" d="M6 6h.008v.008H6V6z" /></>),
         isImplemented: true,
     },
     {
@@ -67,7 +70,7 @@ export const TOOLS: Tool[] = [
         title: 'Generador de Mood Boards',
         description: 'Crea un collage de inspiración visual y una paleta de colores a partir de un tema o concepto que proporciones.',
         category: ToolCategory.CREATIVE_ASSISTANCE,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z" />),
         isImplemented: true,
     },
     {
@@ -75,7 +78,7 @@ export const TOOLS: Tool[] = [
         title: 'Generador de Storyboards',
         description: 'Describe una escena y obtén un storyboard de 4 paneles con los planos clave para pre-visualizar tu video.',
         category: ToolCategory.CREATIVE_ASSISTANCE,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M6 20.25h12m-7.5-3.75v3.75m-3.75-3.75v3.75m-3.75-3.75h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v9.75A2.25 2.25 0 004.5 16.5z" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M6 20.25h12m-7.5-3.75v3.75m-3.75-3.75v3.75m-3.75-3.75h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v9.75A2.25 2.25 0 004.5 16.5z" />),
         isImplemented: true,
     },
     
@@ -85,7 +88,7 @@ export const TOOLS: Tool[] = [
         title: 'Etiquetado Automático de Assets',
         description: 'Sube una imagen y la IA generará etiquetas relevantes sobre su contenido, estilo y colores para organizar tus recursos.',
         category: ToolCategory.WORKFLOW_OPTIMIZATION,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M5.25 8.25h13.5m-13.5 7.5h13.5" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M5.25 8.25h13.5m-13.5 7.5h13.5" />),
         isImplemented: true,
     },
     {
@@ -93,7 +96,7 @@ export const TOOLS: Tool[] = [
         title: 'Análisis de Contraste de Color',
         description: 'Verifica si tus combinaciones de colores cumplen con las normas de accesibilidad web (WCAG) para garantizar la legibilidad.',
         category: ToolCategory.WORKFLOW_OPTIMIZATION,
-        icon: <svg {...iconProps}><path d="M12 21a9 9 0 100-18 9 9 0 000 18z" /><path d="M12 3a9 9 0 000 18V3z" /></svg>,
+        icon: createIcon(<><path d="M12 21a9 9 0 100-18 9 9 0 000 18z" /><path d="M12 3a9 9 0 000 18V3z" /></>),
         isImplemented: true,
     },
     {
@@ -101,7 +104,7 @@ export const TOOLS: Tool[] = [
         title: 'Búsqueda Semántica de Assets',
         description: 'Busca en tu librería de imágenes usando lenguaje natural. La IA entiende el contenido de tus archivos.',
         category: ToolCategory.WORKFLOW_OPTIMIZATION,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />),
         isImplemented: true,
     },
     {
@@ -109,7 +112,7 @@ export const TOOLS: Tool[] = [
         title: 'Automatización de Tareas',
         description: 'Ejecuta tareas repetitivas en lote. Sube una imagen y aplica múltiples cambios como redimensionar o aplicar filtros a la vez.',
         category: ToolCategory.WORKFLOW_OPTIMIZATION,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />),
         isImplemented: true,
     },
     
@@ -119,7 +122,7 @@ export const TOOLS: Tool[] = [
         title: 'Eliminación de Fondos',
         description: 'Elimina el fondo de cualquier imagen con un solo clic, dejando el sujeto principal con un fondo transparente.',
         category: ToolCategory.ADVANCED_EDITING,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M6.75 6.75C6.75 5.64543 7.64543 4.75 8.75 4.75H15.25C16.3546 4.75 17.25 5.64543 17.25 6.75V19.5L12 14.25L6.75 19.5V6.75Z" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M6.75 6.75C6.75 5.64543 7.64543 4.75 8.75 4.75H15.25C16.3546 4.75 17.25 5.64543 17.25 6.75V19.5L12 14.25L6.75 19.5V6.75Z" />),
         isImplemented: true,
     },
     {
@@ -127,7 +130,7 @@ export const TOOLS: Tool[] = [
         title: 'Expansión de Imagen (Outpainting)',
         description: 'Amplía los bordes de una imagen. La IA rellenará el espacio de forma coherente con el contenido existente.',
         category: ToolCategory.ADVANCED_EDITING,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />),
         isImplemented: true,
     },
     {
@@ -135,7 +138,7 @@ export const TOOLS: Tool[] = [
         title: 'Mejora de Resolución (Upscaling)',
         description: 'Aumenta la resolución y calidad de imágenes pequeñas o pixeladas, añadiendo detalles para un acabado profesional.',
         category: ToolCategory.ADVANCED_EDITING,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />),
         isImplemented: true,
     },
     {
@@ -143,7 +146,7 @@ export const TOOLS: Tool[] = [
         title: 'Restauración de Fotos',
         description: 'Repara fotos antiguas o dañadas, eliminando arañazos, mejorando la nitidez y restaurando los colores.',
         category: ToolCategory.ADVANCED_EDITING,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />),
         isImplemented: true,
     },
     {
@@ -151,7 +154,7 @@ export const TOOLS: Tool[] = [
         title: 'Vectorizador IA',
         description: 'Convierte bocetos o imágenes de mapa de bits en trazados vectoriales limpios, listos para escalar sin perder calidad.',
         category: ToolCategory.ADVANCED_EDITING,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m0 13.5v2.25M4.5 12H2.25m19.5 0h-2.25M6.375 6.375l-1.5-1.5m14.25 14.25l-1.5-1.5M12 12a5.25 5.25 0 00-5.25 5.25H12a5.25 5.25 0 005.25-5.25V12a5.25 5.25 0 00-5.25-5.25H12a5.25 5.25 0 00-5.25 5.25h5.25v5.25z" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m0 13.5v2.25M4.5 12H2.25m19.5 0h-2.25M6.375 6.375l-1.5-1.5m14.25 14.25l-1.5-1.5M12 12a5.25 5.25 0 00-5.25 5.25H12a5.25 5.25 0 005.25-5.25V12a5.25 5.25 0 00-5.25-5.25H12a5.25 5.25 0 00-5.25 5.25h5.25v5.25z" />),
         isImplemented: true,
     },
     {
@@ -159,7 +162,7 @@ export const TOOLS: Tool[] = [
         title: 'Fotografía de Producto IA',
         description: 'Sube una foto de un producto y mejórala con fondos, iluminación y estilos profesionales generados por IA.',
         category: ToolCategory.ADVANCED_EDITING,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.776 48.776 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" /><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" /></svg>,
+        icon: createIcon(<><path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.776 48.776 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" /><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" /></>),
         isImplemented: true,
     },
     
@@ -169,7 +172,7 @@ export const TOOLS: Tool[] = [
         title: 'Análisis de Tendencias',
         description: 'Obtén un informe sobre las tendencias de diseño actuales para un mercado o audiencia específicos.',
         category: ToolCategory.ANALYSIS_OPTIMIZATION,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-3.94-3.94m3.94 3.94l-3.94 3.94" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-3.94-3.94m3.94 3.94l-3.94 3.94" />),
         isImplemented: true,
     },
     {
@@ -177,7 +180,7 @@ export const TOOLS: Tool[] = [
         title: 'Asistente de Pruebas A/B',
         description: 'Genera múltiples variantes de texto (títulos, copys) para un producto o campaña y prueba cuál funciona mejor.',
         category: ToolCategory.ANALYSIS_OPTIMIZATION,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.092 1.21-.138 2.43-.138 3.662v4.286m0 0v3.75m0-3.75a3 3 0 013-3h4.286a3 3 0 013 3v3.75m-10.5-3.75h10.5" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.092 1.21-.138 2.43-.138 3.662v4.286m0 0v3.75m0-3.75a3 3 0 013-3h4.286a3 3 0 013 3v3.75m-10.5-3.75h10.5" />),
         isImplemented: true,
     },
     {
@@ -185,7 +188,7 @@ export const TOOLS: Tool[] = [
         title: 'Detector de Originalidad',
         description: 'Analiza un diseño y busca en la web para encontrar conceptos visuales similares, ayudando a asegurar la originalidad.',
         category: ToolCategory.ANALYSIS_OPTIMIZATION,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.774 4.774zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.774 4.774zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" />),
         isImplemented: true,
     },
     {
@@ -193,7 +196,7 @@ export const TOOLS: Tool[] = [
         title: 'Optimización para Redes Sociales',
         description: 'Obtén las especificaciones de diseño y las mejores prácticas para cualquier plataforma de redes sociales.',
         category: ToolCategory.ANALYSIS_OPTIMIZATION,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56a12.018 12.018 0 00-5.84-2.56m0 0a12.018 12.018 0 00-5.84 2.56m5.84-2.56V4.72a6 6 0 0111.68 0v1.25" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56a12.018 12.018 0 00-5.84-2.56m0 0a12.018 12.018 0 00-5.84 2.56m5.84-2.56V4.72a6 6 0 0111.68 0v1.25" />),
         isImplemented: true,
     },
     
@@ -203,7 +206,7 @@ export const TOOLS: Tool[] = [
         title: 'Asistente de Diseño Conversacional',
         description: 'Chatea con una IA experta en diseño para obtener ideas, críticas, sugerencias o incluso ayuda técnica.',
         category: ToolCategory.DESIGN_ASSISTANT,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />),
         isImplemented: true,
     },
     {
@@ -211,7 +214,7 @@ export const TOOLS: Tool[] = [
         title: 'Crítica Automatizada',
         description: 'Recibe un análisis experto de tu diseño, evaluando composición, jerarquía, color y tipografía.',
         category: ToolCategory.DESIGN_ASSISTANT,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 019 9v.375M10.125 2.25A3.375 3.375 0 0113.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 013.375 3.375M9 15l2.25 2.25L15 12" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 019 9v.375M10.125 2.25A3.375 3.375 0 0113.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 013.375 3.375M9 15l2.25 2.25L15 12" />),
         isImplemented: true,
     },
     {
@@ -219,7 +222,7 @@ export const TOOLS: Tool[] = [
         title: 'Sugerencias de Mejora',
         description: 'Sube un diseño y la IA te dará sugerencias concretas y accionables para aumentar su impacto.',
         category: ToolCategory.DESIGN_ASSISTANT,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.73-.626 1.196-.626h.178c.597 0 1.143.255 1.516.678l2.496-3.03m-4.665 3.03l-2.496-3.03c-.317-.384-.73-.626-1.196-.626h-.178c-.597 0-1.143.255-1.516.678l-2.496 3.03m7.492 0l-3.746 4.566A2.25 2.25 0 0112 18.75v-2.25m3.746-3.934l-3.746-4.566A2.25 2.25 0 0012 6.25v2.25m-3.746 3.934l3.746-4.566" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.73-.626 1.196-.626h.178c.597 0 1.143.255 1.516.678l2.496-3.03m-4.665 3.03l-2.496-3.03c-.317-.384-.73-.626-1.196-.626h-.178c-.597 0-1.143.255-1.516.678l-2.496 3.03m7.492 0l-3.746 4.566A2.25 2.25 0 0112 18.75v-2.25m3.746-3.934l-3.746-4.566A2.25 2.25 0 0012 6.25v2.25m-3.746 3.934l3.746-4.566" />),
         isImplemented: true,
     },
     {
@@ -227,7 +230,7 @@ export const TOOLS: Tool[] = [
         title: 'Detector de Errores Técnicos',
         description: 'Analiza tu diseño en busca de errores técnicos comunes como baja resolución, problemas de color o fallos tipográficos.',
         category: ToolCategory.DESIGN_ASSISTANT,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />),
         isImplemented: true,
     },
     {
@@ -235,7 +238,7 @@ export const TOOLS: Tool[] = [
         title: 'Guías de Estilo Automáticas',
         description: 'Sube un logo y la IA generará una guía de estilo básica, con colores, tipografías y tono de marca.',
         category: ToolCategory.DESIGN_ASSISTANT,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6-2.292m0 0v14.25" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6-2.292m0 0v14.25" />),
         isImplemented: true,
     },
     {
@@ -243,7 +246,7 @@ export const TOOLS: Tool[] = [
         title: 'Generador de Guion de Presentación',
         description: 'Crea un guion profesional y persuasivo para presentar tu diseño a un cliente, basado en una imagen y los objetivos.',
         category: ToolCategory.DESIGN_ASSISTANT,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5A3.375 3.375 0 006.375 7.5H5.25m11.9-3.662A2.251 2.251 0 0015.25 1.538V1.5c0-.828-.672-1.5-1.5-1.5h-1.5c-.828 0-1.5.672-1.5 1.5v.038c.002.162.015.324.042.484m-2.135 3.318a2.25 2.25 0 012.25-2.25h1.5a2.25 2.25 0 012.25 2.25m-6.08 8.026a2.25 2.25 0 01-2.25 2.25h-1.5a2.25 2.25 0 01-2.25-2.25m9.38-2.25a2.25 2.25 0 002.25-2.25h1.5a2.25 2.25 0 002.25 2.25" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5A3.375 3.375 0 006.375 7.5H5.25m11.9-3.662A2.251 2.251 0 0015.25 1.538V1.5c0-.828-.672-1.5-1.5-1.5h-1.5c-.828 0-1.5.672-1.5 1.5v.038c.002.162.015.324.042.484m-2.135 3.318a2.25 2.25 0 012.25-2.25h1.5a2.25 2.25 0 012.25 2.25m-6.08 8.026a2.25 2.25 0 01-2.25 2.25h-1.5a2.25 2.25 0 01-2.25-2.25m9.38-2.25a2.25 2.25 0 002.25-2.25h1.5a2.25 2.25 0 002.25 2.25" />),
         isImplemented: true,
     },
     {
@@ -251,7 +254,7 @@ export const TOOLS: Tool[] = [
         title: 'Generador de Presentaciones',
         description: 'Sube un grupo de imágenes y obtén una presentación de diapositivas estructurada con texto generado por IA.',
         category: ToolCategory.DESIGN_ASSISTANT,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122" />),
         isImplemented: true,
     },
 
@@ -261,7 +264,7 @@ export const TOOLS: Tool[] = [
         title: 'Diseño de Logos',
         description: 'Genera conceptos de logos basados en el nombre de la empresa, industria, palabras clave y estilo deseado.',
         category: ToolCategory.PROJECT_SPECIFIC,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />),
         isImplemented: true,
     },
     {
@@ -269,7 +272,7 @@ export const TOOLS: Tool[] = [
         title: 'Kit de Identidad de Marca',
         description: 'Sube un logo y genera un kit de marca completo: paleta de colores, tipografías y ejemplos de aplicación (mockups).',
         category: ToolCategory.PROJECT_SPECIFIC,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 7.125A2.25 2.25 0 014.5 4.875h15A2.25 2.25 0 0121.75 7.125v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25v-10.5zM12 4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v.375m-6 .375v.375m0-1.125c0 .621.504 1.125 1.125 1.125h2.25c.621 0 1.125-.504 1.125-1.125v-.375M12 4.875v-1.5a2.25 2.25 0 00-2.25-2.25h-1.5a2.25 2.25 0 00-2.25 2.25v1.5" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M2.25 7.125A2.25 2.25 0 014.5 4.875h15A2.25 2.25 0 0121.75 7.125v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25v-10.5zM12 4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v.375m-6 .375v.375m0-1.125c0 .621.504 1.125 1.125 1.125h2.25c.621 0 1.125-.504 1.125-1.125v-.375M12 4.875v-1.5a2.25 2.25 0 00-2.25-2.25h-1.5a2.25 2.25 0 00-2.25 2.25v1.5" />),
         isImplemented: true,
     },
     {
@@ -277,7 +280,7 @@ export const TOOLS: Tool[] = [
         title: 'Asistente de Diseño Web UI',
         description: 'Obtén sugerencias de layout y estructura de componentes para diferentes tipos de páginas web.',
         category: ToolCategory.PROJECT_SPECIFIC,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M6 20.25h12m-12-3.75h12m-12-3.75h12m-12-3.75h12m-12-3.75h12m-12-3.75h12M4.5 2.25h15a2.25 2.25 0 012.25 2.25v15a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25v-15A2.25 2.25 0 014.5 2.25z" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M6 20.25h12m-12-3.75h12m-12-3.75h12m-12-3.75h12m-12-3.75h12m-12-3.75h12M4.5 2.25h15a2.25 2.25 0 012.25 2.25v15a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25v-15A2.25 2.25 0 014.5 2.25z" />),
         isImplemented: true,
     },
     {
@@ -285,7 +288,7 @@ export const TOOLS: Tool[] = [
         title: 'Análisis de Diseño de Packaging',
         description: 'Analiza el impacto visual de un diseño de empaque y obtén sugerencias para mejorarlo en un entorno de venta.',
         category: ToolCategory.PROJECT_SPECIFIC,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" /></svg>,
+        icon: createIcon(<path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />),
         isImplemented: true,
     },
     {
@@ -293,7 +296,7 @@ export const TOOLS: Tool[] = [
         title: 'Asistente de Tipografía',
         description: 'Encuentra pares de fuentes (título y cuerpo) que funcionen bien juntas, basadas en el "mood" y estilo del proyecto.',
         category: ToolCategory.PROJECT_SPECIFIC,
-        icon: <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m0 0l-3.75-3.75M12 19.5l3.75-3.75" /><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5" /></svg>,
+        icon: createIcon(<><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m0 0l-3.75-3.75M12 19.5l3.75-3.75" /><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5" /></>),
         isImplemented: true,
     },
 ];
