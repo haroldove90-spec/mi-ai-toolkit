@@ -33,6 +33,14 @@ import Typography from './components/tools/Typography';
 import AIVectorizer from './components/tools/AIVectorizer';
 import ProductPhotography from './components/tools/ProductPhotography';
 import BrandNameGenerator from './components/tools/BrandNameGenerator';
+import SemanticSearch from './components/tools/SemanticSearch';
+import TaskAutomation from './components/tools/TaskAutomation';
+import VoiceToDesign from './components/tools/VoiceToDesign';
+import BrandIdentityKit from './components/tools/BrandIdentityKit';
+import MoodBoardGenerator from './components/tools/MoodBoardGenerator';
+import LiveDesignSession from './components/tools/LiveDesignSession';
+import VideoStoryboardGenerator from './components/tools/VideoStoryboardGenerator';
+import SlideshowGenerator from './components/tools/SlideshowGenerator';
 
 
 const App: React.FC = () => {
@@ -63,14 +71,20 @@ const App: React.FC = () => {
         switch (activeTool.id) {
             // Creative Assistance
             case 'design-from-prompt': return <ImageGenerator {...toolProps} />;
+            case 'live-design-session': return <LiveDesignSession {...toolProps} />;
+            case 'voice-to-design': return <VoiceToDesign {...toolProps} />;
             case 'smart-color-palettes': return <ColorPaletteGenerator {...toolProps} />;
             case 'visual-brainstorming': return <VisualBrainstorming {...toolProps} />;
             case 'auto-mockups': return <AutoMockups {...toolProps} />;
             case 'brand-name-generator': return <BrandNameGenerator {...toolProps} />;
+            case 'mood-board-generator': return <MoodBoardGenerator {...toolProps} />;
+            case 'video-storyboard-generator': return <VideoStoryboardGenerator {...toolProps} />;
             
             // Workflow
             case 'auto-tagging': return <AutoTagging {...toolProps} />;
             case 'color-compatibility': return <ColorCompatibility {...toolProps} />;
+            case 'semantic-search': return <SemanticSearch {...toolProps} />;
+            case 'task-automation': return <TaskAutomation {...toolProps} />;
 
             // Advanced Editing
             case 'bg-removal': return <BgRemoval {...toolProps} />;
@@ -92,9 +106,11 @@ const App: React.FC = () => {
             case 'error-detection': return <ErrorDetection {...toolProps} />;
             case 'auto-style-guides': return <AutoStyleGuides {...toolProps} />;
             case 'presentation-script-generator': return <PresentationScriptGenerator {...toolProps} />;
+            case 'slideshow-generator': return <SlideshowGenerator {...toolProps} />;
 
             // Project Specific
             case 'logo-design': return <LogoDesign {...toolProps} />;
+            case 'brand-identity-kit': return <BrandIdentityKit {...toolProps} />;
             case 'web-ui-design': return <WebUIDesign {...toolProps} />;
             case 'packaging-design': return <PackagingDesign {...toolProps} />;
             case 'typography': return <Typography {...toolProps} />;

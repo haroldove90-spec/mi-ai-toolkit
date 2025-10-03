@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { generateTextWithImage } from '../../services/geminiService';
+import { analyzeOriginality } from '../../services/geminiService';
 import type { Tool } from '../../types';
 import Spinner from '../ui/Spinner';
 
@@ -18,6 +18,7 @@ interface AnalysisResult {
     originalityScore: number; // Puntuación de 1 a 10
     summary: string;
     similarDesigns: Similarity[];
+    similarImages?: string[]; // Array de URLs de imágenes base64
     rawResponse?: string; // Fallback por si el JSON falla
 }
 
@@ -47,7 +48,7 @@ const PlagiarismDetection: React.FC<PlagiarismDetectionProps> = ({ tool, onBack 
         setAnalysis(null);
         try {
             const prompt = `Act as a design originality expert. Analyze this image and search for visually similar designs, concepts, or logos. Provide a detailed report on its originality. Respond in JSON format with the following structure: { "originalityScore": <a number between 1 and 10 where 10 is completely unique>, "summary": "<a brief analysis summary>", "similarDesigns": [{ "title": "<name of similar design/concept>", "description": "<brief description of the similar design and why it's relevant>" }] }. If you find no similar designs, the similarDesigns array should be empty.`;
-            const response = await generateTextWithImage(prompt, imageFile, true);
+            const response = await analyzeOriginality(prompt, imageFile);
             setAnalysis(response);
         } catch (err) {
             setError(err instanceof Error ? err.message : 'An unknown error occurred.');
@@ -72,7 +73,7 @@ const PlagiarismDetection: React.FC<PlagiarismDetectionProps> = ({ tool, onBack 
 
             <div className="mt-6 mb-8 p-4 bg-gray-800 border border-gray-700 rounded-lg text-center">
                 <p className="text-sm text-gray-300">
-                    <span className="font-semibold text-purple-400">¿Cómo funciona?</span> Sube la imagen de tu diseño. La IA buscará en la web para encontrar diseños visualmente similares y te dará un informe sobre la originalidad.
+                    <span className="font-semibold text-purple-400">¿Cómo funciona?</span> Sube la imagen de tu diseño. La IA buscará en la web para encontrar diseños visualmente similares y te dará un informe sobre la originalidad, ¡incluyendo ejemplos visuales!
                 </p>
             </div>
 
@@ -127,9 +128,13 @@ const PlagiarismDetection: React.FC<PlagiarismDetectionProps> = ({ tool, onBack 
                         {analysis.similarDesigns && analysis.similarDesigns.length > 0 && (
                             <div>
                                 <h4 className="text-lg font-bold text-purple-400 mb-2">Posibles Similitudes Encontradas</h4>
-                                <div className="space-y-4">
-                                {analysis.similarDesigns.map((design, index) => (
+                                <p className="text-sm text-gray-400 mb-4">La IA ha identificado los siguientes conceptos como potencialmente similares y ha generado una visualización de ellos.</p>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {analysis.similarDesigns.slice(0, 2).map((design, index) => (
                                     <div key={index} className="bg-gray-900 p-4 rounded-lg border-l-4 border-gray-700">
+                                        {analysis.similarImages && analysis.similarImages[index] && (
+                                            <img src={analysis.similarImages[index]} alt={design.title} className="w-full aspect-square object-cover rounded-md mb-3" />
+                                        )}
                                         <p className="font-semibold text-white">{design.title || `Diseño Similar ${index + 1}`}</p>
                                         <p className="text-sm text-gray-400 mt-1">{design.description}</p>
                                     </div>

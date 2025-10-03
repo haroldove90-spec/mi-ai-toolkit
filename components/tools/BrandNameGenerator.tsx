@@ -9,13 +9,20 @@ interface BrandNameGeneratorProps {
     onBack: () => void;
 }
 
+interface BrandIdea {
+    name: string;
+    slogan: string;
+    availability: string;
+    visualConcept: string;
+}
+
 const BrandNameGenerator: React.FC<BrandNameGeneratorProps> = ({ tool, onBack }) => {
     const [description, setDescription] = useState('');
     const [keywords, setKeywords] = useState('');
     const [tone, setTone] = useState('Profesional');
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    const [result, setResult] = useState<{ brandNames: string[], slogans: string[] } | null>(null);
+    const [result, setResult] = useState<{ ideas: BrandIdea[] } | null>(null);
 
     const handleGenerate = useCallback(async () => {
         if (!description.trim()) {
@@ -26,22 +33,26 @@ const BrandNameGenerator: React.FC<BrandNameGeneratorProps> = ({ tool, onBack })
         setError(null);
         setResult(null);
         try {
-            const prompt = `Generate 5 brand name ideas and 3 slogan ideas for a product/service. Product description: '${description}'. Keywords: '${keywords}'. The desired tone is '${tone}'.`;
+            const prompt = `Generate 3 complete brand identity concepts for a product/service. Product description: '${description}'. Keywords: '${keywords}'. The desired tone is '${tone}'. For each concept, provide a brand name, a slogan, a simulated availability check ('Probablemente Disponible' or 'Posiblemente Tomado'), and a brief visual concept idea for a logo.`;
             const schema = {
                 type: Type.OBJECT,
                 properties: {
-                    brandNames: {
+                    ideas: {
                         type: Type.ARRAY,
-                        description: "An array of 5 creative brand names.",
-                        items: { type: Type.STRING }
-                    },
-                    slogans: {
-                        type: Type.ARRAY,
-                        description: "An array of 3 catchy slogans.",
-                        items: { type: Type.STRING }
+                        description: "An array of 3 complete brand concepts.",
+                        items: {
+                            type: Type.OBJECT,
+                            properties: {
+                                name: { type: Type.STRING },
+                                slogan: { type: Type.STRING },
+                                availability: { type: Type.STRING, description: "Simulated availability check." },
+                                visualConcept: { type: Type.STRING, description: "A brief logo/visual idea." }
+                            },
+                            required: ["name", "slogan", "availability", "visualConcept"]
+                        }
                     }
                 },
-                required: ["brandNames", "slogans"]
+                required: ["ideas"]
             };
             const response = await generateStructuredText(prompt, schema);
             setResult(response);
@@ -51,9 +62,18 @@ const BrandNameGenerator: React.FC<BrandNameGeneratorProps> = ({ tool, onBack })
             setIsLoading(false);
         }
     }, [description, keywords, tone]);
+    
+    const AvailabilityBadge: React.FC<{ status: string }> = ({ status }) => {
+        const isAvailable = status === 'Probablemente Disponible';
+        return (
+            <span className={`text-xs font-medium px-2.5 py-0.5 rounded-full ${isAvailable ? 'bg-green-500/20 text-green-300' : 'bg-yellow-500/20 text-yellow-300'}`}>
+                {status}
+            </span>
+        );
+    };
 
     return (
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
             <button onClick={onBack} className="mb-6 text-purple-400 hover:text-purple-300">&larr; Volver al Dashboard</button>
             <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold">{tool.title}</h2>
@@ -62,7 +82,7 @@ const BrandNameGenerator: React.FC<BrandNameGeneratorProps> = ({ tool, onBack })
 
             <div className="mt-6 mb-8 p-4 bg-gray-800 border border-gray-700 rounded-lg text-center">
                 <p className="text-sm text-gray-300">
-                    <span className="font-semibold text-purple-400">¿Cómo funciona?</span> Describe tu producto, añade palabras clave y elige un tono. La IA generará nombres de marca y slogans creativos para inspirarte en tu próximo proyecto de branding.
+                    <span className="font-semibold text-purple-400">¿Cómo funciona?</span> Describe tu producto, añade palabras clave y elige un tono. La IA generará conceptos de marca completos, incluyendo nombre, slogan, disponibilidad y una idea para el logo.
                 </p>
             </div>
 
@@ -101,7 +121,7 @@ const BrandNameGenerator: React.FC<BrandNameGeneratorProps> = ({ tool, onBack })
                     className="w-full flex justify-center items-center bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-semibold py-3 px-4 rounded-lg hover:opacity-90 disabled:opacity-50"
                 >
                     {isLoading && <Spinner />}
-                    {isLoading ? 'Generando Ideas...' : 'Generar Nombres y Slogans'}
+                    {isLoading ? 'Generando Ideas...' : 'Generar Conceptos de Marca'}
                 </button>
             </div>
 
@@ -109,20 +129,21 @@ const BrandNameGenerator: React.FC<BrandNameGeneratorProps> = ({ tool, onBack })
             
             <div className="mt-8">
                 {isLoading && <p className="text-center text-gray-400">Buscando inspiración...</p>}
-                {result && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div className="bg-gray-800 p-6 rounded-lg">
-                           <h3 className="text-xl font-semibold mb-4 text-purple-400">Nombres de Marca</h3>
-                           <ul className="space-y-2 list-disc list-inside text-gray-300">
-                               {result.brandNames.map((name, index) => <li key={index}>{name}</li>)}
-                           </ul>
-                        </div>
-                         <div className="bg-gray-800 p-6 rounded-lg">
-                           <h3 className="text-xl font-semibold mb-4 text-purple-400">Slogans</h3>
-                            <ul className="space-y-2 list-disc list-inside text-gray-300">
-                               {result.slogans.map((slogan, index) => <li key={index}>{slogan}</li>)}
-                           </ul>
-                        </div>
+                {result && result.ideas && (
+                    <div className="space-y-6">
+                        {result.ideas.map((idea, index) => (
+                           <div key={index} className="bg-gray-800 border border-gray-700/50 p-6 rounded-lg transform hover:scale-[1.02] transition-transform duration-300">
+                                <div className="flex justify-between items-start mb-2">
+                                    <h3 className="text-2xl font-bold text-purple-400">{idea.name}</h3>
+                                    <AvailabilityBadge status={idea.availability} />
+                                </div>
+                                <p className="text-lg italic text-gray-300 mb-4">"{idea.slogan}"</p>
+                                <div>
+                                    <h4 className="font-semibold text-gray-200">Concepto Visual:</h4>
+                                    <p className="text-gray-400 text-sm">{idea.visualConcept}</p>
+                                </div>
+                           </div>
+                        ))}
                     </div>
                 )}
             </div>

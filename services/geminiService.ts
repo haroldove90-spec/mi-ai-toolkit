@@ -47,12 +47,30 @@ export const generateImage = (prompt: string, numberOfImages: number = 2, aspect
     return callApi('generateImage', { prompt, numberOfImages, aspectRatio });
 };
 
+export const generateStoryboard = (sceneDescription: string): Promise<string[]> => {
+    return callApi('generateStoryboard', { sceneDescription });
+};
+
 export const generateStructuredText = (prompt: string, responseSchema: any): Promise<any> => {
     return callApi('generateStructuredText', { prompt, responseSchema });
 };
 
 export const generateText = (prompt: string): Promise<string> => {
     return callApi('generateText', { prompt });
+};
+
+export const generateDetailedBrief = (userPrompt: string): Promise<string> => {
+    const prompt = `Act as a creative director. A designer has given you this initial idea: "${userPrompt}". 
+    Expand this into a detailed creative brief for an image generation AI. 
+    The brief should be a single block of text, starting with the original idea and then expanding on it. 
+    Include details about:
+    - A specific visual style (e.g., minimalist vector art, photorealistic, cinematic).
+    - A color palette.
+    - The mood and atmosphere.
+    - The composition and subject placement.
+    - Key elements to include.
+    Make the final text a rich, descriptive paragraph that will guide the AI to create a high-quality, specific image.`;
+    return generateText(prompt);
 };
 
 export const generateTextWithImage = async (prompt: string, image: File, isJson: boolean = false): Promise<any> => {
@@ -64,6 +82,59 @@ export const editImage = async (prompt: string, image: File): Promise<{ text: st
     const serializableImage = await fileToSerializable(image);
     return callApi('editImage', { prompt, image: serializableImage });
 };
+
+export const analyzeOriginality = async (prompt: string, image: File): Promise<any> => {
+    const serializableImage = await fileToSerializable(image);
+    return callApi('analyzeOriginality', { prompt, image: serializableImage });
+};
+
+export interface KitData {
+    colors: {
+        primary: string[];
+        secondary: string[];
+    };
+    typography: {
+        headlineFont: string;
+        bodyFont: string;
+        reason: string;
+    };
+    styleKeywords: string[];
+    mockups: string[];
+}
+
+export const generateBrandKit = async (image: File): Promise<KitData> => {
+    const serializableImage = await fileToSerializable(image);
+    return callApi('generateBrandKit', { image: serializableImage });
+};
+
+export interface MoodBoardData {
+    images: string[];
+    colors: string[];
+}
+
+export const generateMoodBoard = (theme: string): Promise<MoodBoardData> => {
+    return callApi('generateMoodBoard', { theme });
+};
+
+export interface Slide {
+    type: 'title' | 'image_left' | 'image_right' | 'full_image' | 'bullet_points' | 'end';
+    title?: string;
+    subtitle?: string;
+    text?: string;
+    image_index?: number;
+    caption?: string;
+    points?: string[];
+}
+
+export interface SlideshowData {
+    slides: Slide[];
+}
+
+export const generateSlideshow = async (images: File[], title: string, points: string): Promise<SlideshowData> => {
+    const serializableImages = await Promise.all(images.map(fileToSerializable));
+    return callApi('generateSlideshow', { images: serializableImages, title, points });
+};
+
 
 // --- Tipos y funciones específicas que usan los servicios anteriores ---
 
